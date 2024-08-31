@@ -11,21 +11,25 @@ import Contact from "./pages/Contact.jsx";
 import About from "./pages/About.jsx";
 import Login from "./pages/Login.jsx";
 import Register from "./pages/Register.jsx";
+import { Provider } from "react-redux";
+import store from "../redux/store.js";
 
 createRoot(document.getElementById("root")).render(
   <StrictMode>
-    <BrowserRouter>
-      <Header />
-      <Routes>
-        <Route element={<App />} path="/" />
-        <Route element={<Books />} path="/books" />
-        <Route element={<Categories />} path="/categories" />
-        <Route element={<Contact />} path="/contact-us" />
-        <Route element={<About />} path="/about" />
-        <Route element={<Login />} path="/login" />
-        <Route element={<Register />} path="/register" />
-      </Routes>
-      <Footer />
-    </BrowserRouter>
+    <Provider store={store}>
+      <BrowserRouter>
+        <Header />
+        <Routes>
+          <Route element={<App />} path="/" />
+          <Route element={<Books />} path="/books" />
+          <Route element={<Categories />} path="/categories" />
+          <Route element={<Contact />} path="/contact-us" />
+          <Route element={<About />} path="/about" />
+          <Route element={<Login />} path="/login" />
+          <Route element={<Register />} path="/register" />
+        </Routes>
+        <Footer />
+      </BrowserRouter>
+    </Provider>
   </StrictMode>
 );

@@ -85,3 +85,12 @@ h2 .feat {
     39% 35%
   );
 }
+.half {
+  background-image: linear-gradient(
+    to right,
+    #fde047 0%,
+    #fde047 50%,
+    #94a3b8 50%,
+    #94a3b8 100%
+  );
+}

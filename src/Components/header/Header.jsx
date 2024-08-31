@@ -1,8 +1,7 @@
 import { Link, useLocation } from "react-router-dom";
 import { FaBars, FaShoppingCart } from "react-icons/fa";
 import { useState } from "react";
-import { FaXmark } from "react-icons/fa6";
-import { CiSquareMinus, CiSquarePlus } from "react-icons/ci";
+import Cart from "./Cart";
 export default function Header() {
   const loggedIn = false;
   const links = [
@@ -19,12 +18,7 @@ export default function Header() {
   return (
     <header className=" flex items-center justify-between h-16 px-16 max-[488px]:px-0 max-[488px]:justify-evenly max-[488px]:gap-12 bg-white shadow-md">
       <Link className="logo" to="/">
-        <img
-          src="/logo.png"
-          width={104}
-          height={104}
-          // style={{ width: 104, aspectRatio: 104 / 104 }}
-        />
+        <img src="/logo.png" width={104} height={104} />
       </Link>
       <div className="flex gap-12 items-center">
         <nav className="links md:flex hidden gap-x-4">
@@ -43,7 +37,7 @@ export default function Header() {
         <div className="flex justify-center items-center gap-5 max-[488px]:gap-2">
           <div className="relative outline-none border-none h-12 w-12">
             <button
-              className="caaart flex justify-center items-center w-full h-full hover:bg-secondry transition rounded-full"
+              className="caaart flex select-none outline-none justify-center items-center w-full h-full hover:bg-secondry transition rounded-full"
               onClick={() => {
                 setShow(false);
                 setShowCart((prev) => !prev);
@@ -55,55 +49,7 @@ export default function Header() {
                 className="transition-none"
               />
             </button>
-            <div className={`${showCart ? "visible" : "hidden"}`}>
-              <div className="traingle absolute top-10 right-2 bg-slate-200 h-4 w-8" />
-              <div className="absolute top-14 right-2 bg-slate-100 w-56">
-                <ul>
-                  <li className="flex flex-row p-2">
-                    <img
-                      src="/book1.jpg"
-                      width={60}
-                      height={90}
-                      className="rounded-md"
-                    />
-                    <div>
-                      <div className="flex flex-row w-full justify-between items-start pl-1 h-20">
-                        <h4 className="text-xs font-semibold line-clamp-2">
-                          Gift of Earth Gift of Earth Gift of EarthGift of Earth
-                        </h4>
-                        <button className="flex justify-center items-center bg-red-500 rounded-md h-5 w-5">
-                          <FaXmark color="#F5F5F5" size={18} />
-                        </button>
-                      </div>
-
-                      <div className="flex flex-row justify-between items-center w-full pl-2 ">
-                        <div className="indicator flex items-center gap-1">
-                          <button className="flex justify-center items-center  text-lg rounded-sm">
-                            <CiSquarePlus color="black" size={16} />
-                          </button>
-                          <input
-                            className="w-6 h-3.5 bg-gray-300 text-xs rounded-sm select-none outline-none"
-                            type="number"
-                            step={1}
-                            max="2"
-                            inputMode="numeric"
-                          />
-                          <button className="flex justify-center items-centertext-lg rounded-sm">
-                            <CiSquareMinus color="black" size={16} />
-                          </button>
-                        </div>
-                        <div className="price text-xs">27$</div>
-                      </div>
-                    </div>
-                  </li>
-                  <Link>
-                    <div className="w-full h-8 text-center border-y-2 bg-zinc-300 text-sm">
-                      Show More
-                    </div>
-                  </Link>
-                </ul>
-              </div>
-            </div>
+            <Cart showCart={showCart} />
           </div>
           <Link
             to="/login"
@@ -131,7 +77,7 @@ export default function Header() {
               {links.map((href, i) => (
                 <li
                   key={i}
-                  className={i === 0 && "mt-2"}
+                  className={(i === 0 && "mt-2") || "q"}
                   // onClick={() =>}
                 >
                   <Link

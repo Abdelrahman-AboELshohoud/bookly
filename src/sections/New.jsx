@@ -5,12 +5,10 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import RightArrow from "../Components/RightArrow";
 import LeftArrow from "../Components/LeftArrow";
-import { useEffect } from "react";
+import books from "../../data";
+import { useState } from "react";
 
 export default function New() {
-  let num;
-  //   const width = window.innerWidth;
-  console.log(num);
   const settings = {
     speed: 300,
     slidesToShow: 7,
@@ -50,8 +48,8 @@ export default function New() {
         {...settings}
         className=" flex items-center justify-items-center place-items-center justify-self-center align-middle justify-cnter w-full"
       >
-        {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map((e) => (
-          <Card key={e} />
+        {books.slice(0, 10).map((book, i) => (
+          <Card key={i} data={book} />
         ))}
       </Slider>
     </section>
