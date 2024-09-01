@@ -35,9 +35,9 @@ export default function Header() {
           ))}
         </nav>
         <div className="flex justify-center items-center gap-5 max-[488px]:gap-2">
-          <div className="relative outline-none border-none h-12 w-12">
+          <div className="relative border-none h-12 w-12">
             <button
-              className="caaart flex select-none outline-none justify-center items-center w-full h-full hover:bg-secondry transition rounded-full"
+              className="caaart flex select-none justify-center items-center w-full h-full hover:bg-secondry transition rounded-full"
               onClick={() => {
                 setShow(false);
                 setShowCart((prev) => !prev);

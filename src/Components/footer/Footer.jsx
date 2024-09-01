@@ -3,7 +3,7 @@ import { FaSquareWhatsapp, FaSquareXTwitter } from "react-icons/fa6";
 
 export default function Footer() {
   return (
-    <ul className="flex justify-between items-center gap-6 bg-whitew h-fit sm:px-16 px-8 py-10 min-[488px]:flex-row flex-col flex-1">
+    <ul className="flex justify-between items-center gap-6 bg-whitew min-h-full sm:px-16 px-8 py-10 min-[488px]:flex-row flex-col flex-1">
       <li className="flex flex-col items-center gap-1 w-full min-[488px]:w-auto">
         <img src="/logo.png" alt="" width={104} />
         <span className="w-28 md:w-32 max-[488px]:text-center">

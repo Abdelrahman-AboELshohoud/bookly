@@ -41,7 +41,7 @@ export default function CartItem({ details, quantityInCart }) {
             >
               <CiSquarePlus color="black" size={17} />
             </button>
-            <div className="w-6 h-4 bg-gray-300 text-xs text-center text-gray-950 rounded-sm select-none outline-none">
+            <div className="w-6 h-4 bg-gray-300 text-xs text-center text-gray-950 rounded-sm select-none">
               {quantityInCart}
             </div>
             <button
@@ -52,7 +52,9 @@ export default function CartItem({ details, quantityInCart }) {
               <CiSquareMinus color="black" size={17} />
             </button>
           </div>
-          <div className="price text-xs">{details?.price}$</div>
+          <div className="price text-xs">
+            {details?.price * quantityInCart}$
+          </div>
         </div>
       </div>
     </li>
