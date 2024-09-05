@@ -41,7 +41,7 @@ export default function Card({ data }) {
     return m;
   };
   rateCalc(3.5);
-  console.log(rateCalc(2.5).length);
+  // console.log(rateCalc(2.5).length);
 
   return (
     <div className="card flex flex-col items-center gap-2 w-[116px] h-[200px] p-2  pb-1 rounded-md bg-whitew gap-x-2 relative shadow-sm shadow-blackw m-1">

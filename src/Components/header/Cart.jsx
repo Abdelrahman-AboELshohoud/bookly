@@ -37,7 +37,7 @@ export default function Cart({ showCart }) {
         )}
         <Link>
           <div className="w-full h-8 text-center border-y-2 bg-zinc-300 text-sm">
-            Show More
+            showList More
           </div>
         </Link>
       </div>

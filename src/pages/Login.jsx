@@ -1,6 +1,39 @@
-import { Link } from "react-router-dom";
+import { useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
 
 export default function Login() {
+  const navigate = useNavigate();
+
+  const [emailPhone, setEmailPhone] = useState("");
+  const [password, setPassword] = useState("");
+  const handleLogin = () => {
+    const firstInput = isNaN(emailPhone)
+      ? { email: emailPhone }
+      : { phone: emailPhone };
+
+    fetch("http://localhost:8000/api/auth/login", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        ...firstInput,
+        password,
+      }),
+    })
+      .then((data) => {
+        data.json();
+        console.log(data);
+        localStorage.setItem("loggedIn", true);
+        navigate("/");
+      })
+      .catch((error) => console.error("Error:", error));
+  };
+  // useEffect(() => {
+  //   const loggedIn = localStorage.getItem("loggedIn");
+  //   console.log(loggedIn);
+  //   if (loggedIn) return navigate("/");
+  // }, []);
   return (
     <section className="flex flex-col gap-6 items-center md:pb-8 md:pt-6 py-10 justify-center px-8 md:px-14 sm:px-12">
       <div className="flex flex-row w-[720px] h-[520px] bg-whitew my-4 rounded-md border-blackw border-2 border-opacity-5 overflow-hidden">
@@ -23,6 +56,8 @@ export default function Login() {
                 className="text-sm w-64 px-2.5 py-3 outline-none rounded-lg border border-blackw border-opacity-10"
                 id="email"
                 placeholder="Enter your email or phone number"
+                value={emailPhone}
+                onInput={(e) => setEmailPhone(e.currentTarget.value)}
               />
             </div>
             <div className="flex flex-col">
@@ -37,6 +72,8 @@ export default function Login() {
                 className="text-sm w-64 px-2.5 py-3 outline-none rounded-lg border border-blackw border-opacity-10"
                 id="email"
                 placeholder="Enter your password"
+                value={password}
+                onInput={(e) => setPassword(e.currentTarget.value)}
               />
               <div className="flex justify-between mt-0.5 px-0.5">
                 <div className="flex items-center">
@@ -60,7 +97,10 @@ export default function Login() {
             </div>
           </div>
           <div className="flex flex-col items-center gap-2">
-            <button className="text-center text-lg font-semibold bg-primary text-whitew rounded-lg w-64 shadow-md shadow-primary py-3">
+            <button
+              className="text-center text-lg font-semibold bg-primary text-whitew rounded-lg w-64 shadow-md shadow-primary py-3"
+              onClick={handleLogin}
+            >
               Login
             </button>
             <div className="flex flex-row items-center gap-2 ">
@@ -75,7 +115,10 @@ export default function Login() {
               <div className="text-blackw font-medium">
                 {"Don't have an account?"}
               </div>
-              <Link className="underline text-purple-600 font-semibold">
+              <Link
+                className="underline text-purple-600 font-semibold"
+                to="/register"
+              >
                 Register here
               </Link>
             </div>

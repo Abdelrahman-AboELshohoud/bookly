@@ -11,7 +11,7 @@ import { useState } from "react";
 export default function New() {
   const settings = {
     speed: 300,
-    slidesToShow: 7,
+    slidesToshowList: 7,
     slidesToScroll: 2,
     initialSlide: 0,
     nextArrow: <RightArrow />,
@@ -20,14 +20,14 @@ export default function New() {
       {
         breakpoint: 1024,
         settings: {
-          slidesToShow: 5,
+          slidesToshowList: 5,
           slidesToScroll: 1,
         },
       },
       {
         breakpoint: 768,
         settings: {
-          slidesToShow: 3,
+          slidesToshowList: 3,
           slidesToScroll: 1,
           initialSlide: 2,
         },
@@ -35,7 +35,7 @@ export default function New() {
       {
         breakpoint: 480,
         settings: {
-          slidesToShow: 2,
+          slidesToshowList: 2,
           slidesToScroll: 1,
         },
       },
