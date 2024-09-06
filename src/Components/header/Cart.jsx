@@ -20,7 +20,7 @@ export default function Cart({ showCart }) {
         {cart.length !== 0 ? (
           <ul className={cart.length > 1 && "overflow-y-scroll h-28"}>
             {cart?.map((book, i) => (
-              <div key={i} className="">
+              <div key={i}>
                 {data.map((e) => {
                   if (book?.id === e.id)
                     return (

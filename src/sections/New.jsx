@@ -1,57 +1,56 @@
-// import Carousel from "react-bootstrap/Carousel";
 import Card from "../Components/Card";
-import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import RightArrow from "../Components/RightArrow";
 import LeftArrow from "../Components/LeftArrow";
 import books from "../../data";
-import { useState } from "react";
+import Carousel from "react-multi-carousel";
+import "react-multi-carousel/lib/styles.css";
 
 export default function New() {
-  const settings = {
-    speed: 300,
-    slidesToshowList: 7,
-    slidesToScroll: 2,
-    initialSlide: 0,
-    nextArrow: <RightArrow />,
-    prevArrow: <LeftArrow />,
-    responsive: [
-      {
-        breakpoint: 1024,
-        settings: {
-          slidesToshowList: 5,
-          slidesToScroll: 1,
-        },
-      },
-      {
-        breakpoint: 768,
-        settings: {
-          slidesToshowList: 3,
-          slidesToScroll: 1,
-          initialSlide: 2,
-        },
-      },
-      {
-        breakpoint: 480,
-        settings: {
-          slidesToshowList: 2,
-          slidesToScroll: 1,
-        },
-      },
-    ],
+  const responsive = {
+    superLargeDesktop: {
+      // the naming can be any, depends on you.
+      breakpoint: { max: 4000, min: 3000 },
+      items: 10,
+    },
+    desktop: {
+      breakpoint: { max: 3000, min: 1024 },
+      items: 8,
+    },
+    largeTablet: {
+      breakpoint: { max: 1024, min: 820 },
+      items: 6,
+    },
+
+    tablet: {
+      breakpoint: { max: 820, min: 464 },
+      items: 4,
+    },
+    Smalltablet: {
+      breakpoint: { max: 600, min: 464 },
+      items: 3,
+    },
+    mobile: {
+      breakpoint: { max: 464, min: 0 },
+      items: 2,
+    },
   };
   return (
     <section className=" flex flex-col gap-6 my-6 px-8 md:px-14 sm:px-12">
       <h2 className="font-bold text-2xl text-blackw">New Arrivals</h2>
-      <Slider
-        {...settings}
-        className=" flex items-center justify-items-center place-items-center justify-self-center align-middle justify-cnter w-full"
+      <Carousel
+        draggable={false}
+        infinite={true}
+        transitionDuration={300}
+        removeArrowOnDeviceType={["tablet", "mobile", "Smalltablet"]}
+        responsive={responsive}
+        className="flex slider items-center justify-center w-full"
       >
-        {books.slice(0, 10).map((book, i) => (
+        {books.map((book, i) => (
           <Card key={i} data={book} />
         ))}
-      </Slider>
+      </Carousel>
     </section>
   );
 }
